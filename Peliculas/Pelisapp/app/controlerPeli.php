@@ -1,32 +1,19 @@
 <?php
-// ------------------------------------------------
-// Controlador que realiza la gestión de usuarios
-// ------------------------------------------------
 
 include_once 'config.php';
 include_once 'modeloPeliDB.php'; 
 
-/**********
-/*
- * Inicio Muestra o procesa el formulario (POST)
- */
 
 function  ctlPeliInicio(){
     die(" No implementado.");
    }
-
-/*
- *  Muestra y procesa el formulario de alta 
- */
 
 function ctlPeliAlta (){
     $codigo=ModeloPeliDB::UltimoID();
     $codigo++;
     include_once 'plantilla/cambiar.php';
 }
-/*
- *  Muestra y procesa el formulario de Modificación 
- */
+
 function ctlPeliModificar (){
     $codigo = $_GET['codigo'];
     $peli = ModeloPeliDB::getOne($codigo);
@@ -68,18 +55,11 @@ function ctlBuscar (){
     include_once 'plantilla/verpeliculas.php';
 }
 
-/*
- *  Muestra detalles de la pelicula
- */
-
 function ctlPeliDetalles(){
     $codigo = $_GET['codigo'];
     $peli = ModeloPeliDB::getOne($codigo);
     include_once 'plantilla/detalle.php';
 }
-/*
- * Borrar Peliculas
- */
 
 function ctlPeliBorrar(){
     $codigo=$_GET['codigo'];
@@ -88,18 +68,12 @@ function ctlPeliBorrar(){
     include_once 'plantilla/verpeliculas.php';
 }
 
-/*
- * Cierra la sesión y vuelca los datos
- */
 function ctlPeliCerrar(){
     session_destroy();
     modeloPeliDB::closeDB();
     header('Location:index.php');
 }
 
-/*
- * Muestro la tabla con los usuario 
- */ 
 function ctlPeliVerPelis (){
     // Obtengo los datos del modelo
     $peliculas = modeloPeliDB::GetAll(); 
