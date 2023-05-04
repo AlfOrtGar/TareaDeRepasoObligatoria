@@ -1,6 +1,9 @@
 <?php
 //Esta declaracion la añado para que no me salte un warning al concatenar si no esta modificando
 $contenido="";
+
+//Si estoy modificando muestro la tabla de detalles también para que se vean los valores anteriores
+//Si se entra por alta no se muestra, pero en ambos casos se muestran los campos a rellenar
 if($_GET['orden']=="Modificar"){
     ob_start();
     ?>
